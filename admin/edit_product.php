@@ -22,7 +22,7 @@
 		$location="upload/" . $newFilename;
 	}
 
-	$sql="update product set prod_name='$pname', cat_id='$category', price='$price', photo='$location' where prod_id='$id'";
+	$sql="update product set prod_name='$pname', cat_id='$category', photo='$location' where prod_id='$id'";
 	$conn->query($sql);
 
 	header('location:product.php');

@@ -16,7 +16,7 @@
 	$location="upload/" . $newFilename;
 	}
 	
-	$sql="insert into product (prod_name, cat_id, price, img) values ('$pname', '$category', '$price', '$location')";
+	$sql="insert into product (prod_name, cat_id, img) values ('$pname', '$category', '$location')";
 	$conn->query($sql);
 
 	header('location:product.php');

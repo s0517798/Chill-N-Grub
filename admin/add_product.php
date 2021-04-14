@@ -1,7 +1,7 @@
 <?php
 	include('db_conn.php');
 
-	$pname=$_POST['prod_name'];
+	$pname=$_POST['pname'];
 	$price=$_POST['price'];
 	$category=$_POST['category'];
 

@@ -12,6 +12,8 @@ include_once "functions.php";
                 switch( $user_data['usertype']){
                     case 'W': header("location: ../waiter.php");
                               break;
+                    case 'A': header("location: ../admin/");
+                              break;
                 }
     } else{
         header("location: index.php?error=loginfailed");

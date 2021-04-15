@@ -19,9 +19,11 @@
                 
                 <div class="col-3">
                     <div class="card">
-                        <img src="img/qr/<?php echo $tble_info['qr_img_file'];?>" alt="" class="card-img-top">
                         <h3 class="card-title mx-3">
                         Seat Number <?php echo $tble_info['tbnum'];?>
+                        <br>
+                        <a href="img/qr/<?php echo $tble_info['qr_img_file'];?>" class="btn btn-primary">Seat Here</a>
+                        <a href="includes/processlogintable.php?tablenumber=<?php echo $tble_info['tbnum'];?>" class="btn btn-primary">Test Assign Seat</a>
                         </h3>
                         
                         <div class="card-body">

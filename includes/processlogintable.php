@@ -1,4 +1,6 @@
 <?php
+//echo "This is processing your table status to occupied <br> Seat Number: {$_GET['tablenumber']}";
+//exit;
 if(isset($_GET['tablenumber'])){
         include "db_conn.php";
         $tblnumber = htmlentities($_GET['tablenumber']);
@@ -16,6 +18,6 @@ if(isset($_GET['tablenumber'])){
     
         session_start();
         $_SESSION['tablenumber'] = $_GET['tablenumber'];
-     //   header("location: ../Customer/menu.php?tablenumber={$tblnumber}");
+        header("location: ../Customer/menu.php?tablenumber={$tblnumber}");
         echo "Processed.";
     }

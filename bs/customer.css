@@ -1,0 +1,27 @@
+body{
+	background-image: url('img/b2.jpg');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	font-family: 'Franklin Gothic';
+}
+div.content1{
+	background-color: rgba(255,43,0,0.3);
+	transition: all 2s;
+	transition-timing-function: ease-in;
+}
+div.content1 h1{
+	transition: all 0.5s;
+	transition-timing-function: ease-in;
+	margin-top: 50px;
+	color:white;
+	font-size: 60pt;
+	font-weight: bold;
+	text-align: center;
+}
+
+ul>li>a{
+	color: white;
+	font-size: 25pt;
+}

@@ -1,0 +1,18 @@
+body{
+	background-image: url(../img/b2.jpg);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	font-family: 'Franklin Gothic';
+}
+div.nav{
+	text-align: center;
+	
+}
+ul>li>a.orders{
+	color: white;
+}
+ul>li>a.orders:hover{
+	color:red;
+}

@@ -1,0 +1,31 @@
+div.nav{
+	text-align: center;
+}
+ul>li>a.home{
+	margin-left: 0;
+	margin-right: 50px;
+}
+ul>li>a.menu{
+	margin-left: 0;
+	margin-right: 50px;
+}
+ul>li>a.orders{
+	margin-left: 0;
+	margin-right: 50px;
+}
+ul>li>a.home:hover{
+	color: gray;
+}
+ul>li>a.menu:hover{
+	color: gray;
+}
+ul>li>a.orders:hover{
+	color: gray;
+}
+ul>li{
+	display: inline;
+}
+ul>li>a{
+	color: darkslategrey;
+	font-size: 25pt;
+}

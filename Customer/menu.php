@@ -1,16 +1,16 @@
 <?php 
 include('db_conn.php');
 
-//session_start();
-//if(isset($_GET['tablenumber'])){
-  //  if($_SESSION['tablenumber'] !== $_GET['tablenumber'] ){
-     //   header("location: ?tablenumber={$_SESSION['tablenumber']}");
-   // }
-//}
+session_start();
+if(isset($_GET['tablenumber'])){
+    if($_SESSION['tablenumber'] !== $_GET['tablenumber'] ){
+        header("location: ?tablenumber={$_SESSION['tablenumber']}");
+    }
+}
 
-//if(!isset($_SESSION['tablenumber'])){
-   // header("location: ../");
-//}
+if(!isset($_SESSION['tablenumber'])){
+    header("location: ../");
+}
 
 ?>
 
@@ -25,7 +25,6 @@ include('db_conn.php');
 <?php include('nav.php'); ?>
 
 <div class="container">
-	
 	<h1 class="page-header text-center">MENU for Table Number <?php echo $_SESSION['tablenumber']; ?></h1>
 	
 	
@@ -58,7 +57,7 @@ include('db_conn.php');
 					$query=$conn->query($sql);
 					$iterate=0;
 					while($row=$query->fetch_array()){
-						
+
 
 						 ?>	
 						<div class="container-fluid">
@@ -92,6 +91,7 @@ include('db_conn.php');
 							<!-- <td class="text-left">&#8369; <?php// echo number_format($row['price'], 2); ?></td> -->
 							<!-- <td><input type="number" class="form-control" name="qty_<?php //echo $iterate; ?>"></td> -->
 						<!-- </tr> -->
+
 						<?php
 						$iterate++;
 					}

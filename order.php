@@ -1,14 +1,15 @@
 <?php include('includes/db_conn.php'); 
       include('heading.php');
-      include('cust_nav.php') ;
+      include('cust_nav.php');
+
 session_start();
 if(isset($_GET['tablenumber'])){
     if($_SESSION['tablenumber'] !== $_GET['tablenumber'] ){
         header("location: ?tablenumber={$_SESSION['tablenumber']}");
     }
 }
+
 ?>
-      
 
 <!DOCTYPE html>
 <html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login</title>
+	<title>Chill N Grub</title>
 	<link rel="stylesheet" type="text/css" href="bs/bootstrap.min.css">
 </head>
 <body>

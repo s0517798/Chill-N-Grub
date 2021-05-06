@@ -17,13 +17,14 @@
 		{
 			while($tble_info = mysqli_fetch_assoc($result)){ ?>
                 
-                <div class="col-3">
+                <div class="row">
+                    <div class = col-sm-8>
                     <div class="card">
                         <h3 class="card-title mx-3">
                         Seat Number <?php echo $tble_info['tbnum'];?>
                         <br>
+                        <br>
                         <a href="img/qr/<?php echo $tble_info['qr_img_file'];?>" class="btn btn-primary">Seat Here</a>
-                        <a href="includes/processlogintable.php?tablenumber=<?php echo $tble_info['tbnum'];?>" class="btn btn-primary">Test Assign Seat</a>
                         </h3>
                         
                         <div class="card-body">
@@ -34,7 +35,7 @@
                     break;                  
                                    }?>
                         </div>
-                        
+                        </div>
                     </div>
                 </div>
                 

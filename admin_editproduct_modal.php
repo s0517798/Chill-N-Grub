@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form method="POST" action="admin_edit_product.php?product=<?php echo $row['prod_id']; ?>" enctype="multipart/form-data">
+                    <form method="POST" action="admin_edit_product.php? product=<?php echo $row['prod_id']; ?>" enctype="multipart/form-data">
                     <div class="form-group" style="margin-top:10px;">
                         <div class="row">
                             <div class="col-md-3" style="margin-top:7px;">

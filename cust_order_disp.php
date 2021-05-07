@@ -5,7 +5,7 @@
         <div class="modal-content " style="background-color: rgba(0, 0, 0, .5)" >
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <center><h4 class="modal-title" id="myModalLabel">Sales Full Details</h4></center>
+                <center><h4 class="modal-title" id="myModalLabel">Order Full Details</h4></center>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">

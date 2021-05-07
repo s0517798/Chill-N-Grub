@@ -8,7 +8,6 @@ if(isset($_GET['tablenumber'])){
         header("location: ?tablenumber={$_SESSION['tablenumber']}");
     }
 }
-
 if(!isset($_SESSION['tablenumber'])){
     header("location: index.php");
 }
@@ -27,12 +26,12 @@ if(!isset($_SESSION['tablenumber'])){
 <body>
 <div class="container">
 
-	<h1 class="page-header text-center">ORDERS</h1>
+	<h1 class="page-header text-center">Your Order</h1>
 	<table class="table">
 		<thead>
 			<th>Date</th>
 			<th>Table Name</th>
-			<th>Total Sales</th>
+			<th>Amount to pay</th>
 			<th>Details</th>
 		</thead>
 		<tbody>
@@ -46,7 +45,7 @@ if(!isset($_SESSION['tablenumber'])){
 						<td><?php echo date('M d, Y h:i A', strtotime($row['date']))?></td>
 						<td><?php echo $row['tblnum']; ?></td>
 						<td class="text-left">&#8369; <?php echo number_format($row['total_amount'], 2); ?></td>
-						<td><a href="#details<?php echo $row['od_id']; ?>" data-toggle="modal" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span> View </a>
+						<td><a href="#details<?php echo $row['od_id']; ?>" data-toggle="modal" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span> View Order Details </a>
 							<?php include('cust_order_disp.php'); ?>
 						</td>
 					</tr>

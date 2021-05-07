@@ -1,5 +1,6 @@
 <?php
-	include('db_conn.php');
+	include_once "includes/db_conn.php";
+        
 	if(isset($_POST['prod_id'])){
  
 		$tblnum=$_POST['tblnum'];
@@ -28,7 +29,7 @@
  		
  		$sql="update order_details set total_amount='$total' where od_id='$pid'";
  		$conn->query($sql);
-		header('location:cust_sales.php');		
+		header('location:cust_order.php');		
 	}
 	else{
 		?>

@@ -15,7 +15,7 @@
     <a href="cust_menu.php" class="menu">Menu</a>
     </li>
     <li>
-    <a href="cust_order.php" class="orders">Orders</a>
+    <a href="cust_order.php" class="orders">Your Order</a>
     </li>
     <li>
     <a href="logout.php" class="orders">Logout</a>

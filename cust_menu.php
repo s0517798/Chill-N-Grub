@@ -57,7 +57,7 @@ if(isset($_GET['tablenumber'])){
                     <?php
 					while($row=$query->fetch_array()){ ?>
 	
-                    <div class="card col-3" style="display: inline-block;">
+                    <div  style="display: inline-block;">
                     <input type="checkbox" value="<?php echo $row['prod_id']; ?>||<?php echo $iterate; ?>" name="prod_id[]" style="">
                     <br>
                     <a href="img/<?php echo $row['prod_img'];?>"><img src="img/<?php echo $row['prod_img']; ?>" height="100px" width="100px" class="card-img-top"></a>

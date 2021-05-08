@@ -1,97 +1,93 @@
-<?php 
-include('includes/db_conn.php');
-
+<?php
 session_start();
-if(isset($_GET['tablenumber'])){
-    if($_SESSION['tablenumber'] !== $_GET['tablenumber'] ){
-        header("location: ?tablenumber={$_SESSION['tablenumber']}");
-    }
-}
+$_SESSION['tbnum']=1;
 
-if(!isset($_SESSION['tablenumber'])){
-    header("location: ../");
-}
+include ("includes/db_conn.php");
 
 ?>
 
-<!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-<link rel="stylesheet" type="text/css" href="">
-</head>
+    <title></title>
+    <link rel="stylesheet" href="bs/bootstrap.min.css">
+    <link rel="stylesheet" href="font/bootstrap-icons.css">
+    </head>
 <body>
-<?php include('heading.php')?>
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-50 mt-3">
+        <?php
+        $sql = "SELECT pr.prod_name,pr.prod_img, p.price, c.cat_desc
+		FROM product as pr
+		JOIN pricing as p
+		ON pr.prod_id = p.prod_id
+        JOIN category as c
+        ON pr.cat_id = c.cat_id;";
+        	$stmt=mysqli_stmt_init($conn);
+						if (!mysqli_stmt_prepare($stmt, $sql)){
+							echo "Statement Failed.";
+							exit();
+						}
 
-
-<?php include('cust_nav.php'); ?>
-<div class=""></div>
-<div class="container">
-	<h1 class="page-header text-center">MENU for Table Number <?php echo $_SESSION['tablenumber']; ?></h1>
-	
-	
-	
-
-	<form method="POST" action="buy.php">
-		
-		<table class="table ">
-			<thead>
-				<th class="text-center"><input type="checkbox" id="checkAll"></th>
-				<th>Category</th>
-				<th>Image</th>
-				<th>Product Name</th>
-				<th>Price</th>
-				<th>Quantity</th>
-			</thead>
-			<tbody>
-				<?php
-					$where = "";
-					if(isset($_GET['category']))
-					{
-						$catid=$_GET['category'];
-						$where = " WHERE product.categoryid = $catid";
-					}
-                
-					$sql="SELECT * FROM product left JOIN category on category.cat_id=product.cat_id
-							LEFT JOIN pricing on product.prod_id = pricing.prod_id order by product.cat_id
-							asc,prod_name asc;";
-					$query=$conn->query($sql);
-					$iterate=0;
-					while($row=$query->fetch_array()){
-						?>
-						<tr>
+						mysqli_stmt_execute($stmt);
+						$resultData = mysqli_stmt_get_result($stmt);
+						$arr=array();
+						while($row = mysqli_fetch_assoc($resultData)){
+							array_push($arr,$row);
+						}
 						
-						<td class="text-center"><input type="checkbox" value="<?php echo $row['prod_id']; ?>||<?php echo $iterate; ?>" name="prod_id[]" style=""></td>
+                         //  echo "<table class ='table'>";
+                        ?>
+        
+                            <div class="container">
+                            <div class="row">
+                            
+                         <?php
+                        foreach($arr as $key => $val){ ?>
+                                
+                                <div class="card col-3">
+                                    <img src="img/<?php echo $val['prod_img']; ?>" alt="" class="card-img-top">
+                                    <div class="card-body">       
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $val['prod_name'];?></h5>
+                                    <p class="card-text"><?php echo $val['cat_desc'];?></p>
+                                <p class=card-text> &#8369;<?php echo $val['price'];?></p>    
+                                </div>
+                                
+                                <div class="card-footer">
+                                        <form action="includes/processing.php" method="get">
+                                      <input hidden type="text" name="prod_id" value='<?php echo $val['prod_id'];?>'>
+                                        <div class="input-group">
+                                        <input class="form-control" type="number" name="item_qty" value="">
+                                            <button type = "submit"class="btn btn-primary"> <i class="bi bi-cart-plus"></i></button>
+                                        </div>
+                                    </form>
+                                            </div>
+                                    </div>
+                                </div>
+                                
+               <!--             echo "<tr>";
+							echo "<td>" . $val['prod_name'] . "</td>" ;
+							echo "<td>" . $val['cat_desc'] . "</td>";
+                            echo "<td>" . $val['price'] . "</td>";
+                            echo "</tr>";-->
+                            
 						
-							<td><?php echo $row['cat_desc']; ?></td>
-							<td><img src="<?php echo $row['prod_img']?>" height="100px" width="100px"></td>
-							<td><?php echo $row['prod_name']; ?></td>
-							<td class="text-left">&#8369; <?php echo number_format($row['price'], 2); ?></td>
-							<td><input type="number" class="form-control" name="qty_<?php echo $iterate; ?>"></td>
-						</tr>
-						<?php
-						$iterate++;
-					}
-				?>
-			</tbody>
-		</table>
-		
-		<div class="row">
-			<div class="col-md-12" style="margin-left:5px;">
-			    <input hidden type="text"  name="tblnum" value="<?php echo $_SESSION['tablenumber']; ?>">
-				<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Order</button>
-			</div>
-		</div>
-	</form>
-</div>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#checkAll").click(function(){
-	    	$('input:checkbox').not(this).prop('checked', this.checked);
-		});
-	});
-</script>
-
-
-</body>
+                           <?php
+                                }
+                                echo "</div>";
+                                echo "</div>";
+                                
+                            ?>
+    
+        
+         </div>
+        </div>
+          </div>
+        <div class="col-10"></div>
+                              
+        </div>
+        </div>
+    </body>
+<script src="bs/bootstrap.min.js"></script>
 </html>

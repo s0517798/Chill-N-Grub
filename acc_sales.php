@@ -44,7 +44,12 @@ body {
 						<td><?php echo date('M d, Y h:i A', strtotime($row['date']))?></td>
 						<td><?php echo $row['tblnum']; ?></td>
 						<td class="text-left">&#8369; <?php echo number_format($row['total_amount'], 2); ?></td>
-						<td><?php echo $row['stat']; ?></td>
+						<td><?php switch($row['stat']){
+                                 case 'P': echo "Paid" ;
+                                    break;
+                                 case 'U': echo "Not paid"; 
+                                    break;                  
+                                   }?></td>
 						<td><a href="#details<?php echo $row['od_id']; ?>" data-toggle="modal" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span> View Details </a>
 							<?php include('acc_sales_disp.php'); ?>
 						</td>

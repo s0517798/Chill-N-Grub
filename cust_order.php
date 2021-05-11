@@ -8,9 +8,7 @@ if(isset($_GET['tablenumber'])){
         header("location: ?tablenumber={$_SESSION['tablenumber']}");
     }
 }
-if(!isset($_SESSION['tablenumber'])){
-    header("location: index.php");
-}
+
 
 ?>
 

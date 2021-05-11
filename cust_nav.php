@@ -18,7 +18,7 @@
     <a href="cust_order.php" class="orders">Your Order</a>
     </li>
     <li>
-    <a href="logout.php" class="orders">Logout</a>
+    <a href="thankyou.php" class="orders">Logout</a>
     </li>
     </ul>
 	

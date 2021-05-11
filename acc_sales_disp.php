@@ -22,7 +22,7 @@
                             <th>Product Name</th>
                             <th>Price</th>
                             <th>Purchase Quantity</th>
-                            <th>Payment Status (P for paid U for !paid)</th>
+                            <th>Payment Status</th>
                             <th>Subtotal</th>
                             
                         </thead>
@@ -36,7 +36,12 @@
                                         <td><?php echo $drow['prod_name']; ?></td>
                                         <td class="text-center">&#8369;<?php echo number_format($drow['price'], 2); ?></td>
                                         <td><?php echo $drow['qty']; ?></td>
-                                        <td><?php echo $row['stat']; ?></td>
+                                        <td><?php switch($row['stat']){
+                                            case 'P': echo "Paid" ;
+                                            break;
+                                            case 'U': echo "Not paid"; 
+                                            break;                  
+                                   }?></td>
                                         <td class="text-left">&#8369;
                                             <?php
                                                 $subt = $drow['price']*$drow['qty'];
@@ -60,9 +65,12 @@
             </div>
             <div class="modal-footer">
             
-                <button type="submit" class="btn btn-success" >Set Status To Paid</button>
+                <button type="submit" class="btn btn-success" id="button1" >Set Status To Paid</button>
                 
                 <button type="button" class="btn btn-warning" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                </form>
+                <form action="acc_edittblstatus.php?table=<?php echo $row['tblnum']; ?>" method="POST" enctype="multipart/form-data" id="button2">
+                    <button type="submit" class="btn btn-success" >Update table status</button>
                 </form>
             </div>
         </div>
@@ -70,3 +78,14 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+<script> 
+    $(document).ready(function(){
+    $("#button2").click(function(){
+        alert("Table status updated").show();
+        
+    });
+        $("#button1").click(function(){
+        alert("Status Updated").show();
+    });
+    });
+</script>

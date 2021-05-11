@@ -1,7 +1,5 @@
 <?php 
 include('includes/db_conn.php');
-include('heading.php');
-include('cust_nav.php'); 
 
 session_start();
 if(isset($_GET['tablenumber'])){
@@ -10,83 +8,114 @@ if(isset($_GET['tablenumber'])){
     }
 }
 
-
+//if(!isset($_SESSION['tablenumber'])){
+   // header("location: ../");
+//}
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title> </title>
 <link rel="stylesheet" type="text/css" href="">
 </head>
 <body>
-	
-<div class="container-fluid" style="">
-<div class="row">
-<div class="col-50 mt-3">
+<?php include('heading.php') ?>
+<?php include('cust_nav.php'); ?>
+
+<div class="container">
+	<div class="col-50 mt-3">
 	<h1 class="page-header text-center">MENU for Table Number <?php echo $_SESSION['tablenumber']; ?></h1>
 	
-	<form method="POST" action="cust_buy.php">
-		
-		<div class="row">
-			<div class="col-md-12" style="margin-left:80%;">
-			    <input hidden type="text"  name="tblnum" value="<?php echo $_SESSION['tablenumber']; ?>">
-				<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Order</button>
-			</div>
-		</div>
-
-	</form>
 	
-	<?php
+	
+
+	<!-- <form method="POST" action="cust_buy.php"> -->
+		
+		<!-- <table class="table "> -->
+			<!-- <thead> -->
+				<!-- <th class="text-center"><input type="checkbox" id="checkAll"></th> -->
+				<!-- <th>Category</th> -->
+				<!-- <th>Image</th> -->
+				<!-- <th>Product Name</th> -->
+				<!-- <th>Price</th> -->
+				<!-- <th>Quantity</th> -->
+			<!-- </thead> -->
+						
+			<!-- <tbody> -->
+				<?php
 					$where = "";
 					if(isset($_GET['category']))
 					{
 						$catid=$_GET['category'];
 						$where = " WHERE product.categoryid = $catid";
 					}
-                
+              
 					$sql="SELECT * FROM product left JOIN category on category.cat_id=product.cat_id
 							LEFT JOIN pricing on product.prod_id = pricing.prod_id order by product.cat_id
-							asc,prod_name asc;";
+							asc,prod_name asc;"; 
 					$query=$conn->query($sql);
 					$iterate=0;
-                    ?>
-                    <div class="container">
-                            <div class="row">
-                    <?php
-					while($row=$query->fetch_array()){ ?>
-	
-                    <div  style="display: inline-block;">
-                    <input type="checkbox" value="<?php echo $row['prod_id']; ?>||<?php echo $iterate; ?>" name="prod_id[]" style="">
-                    <br>
-                    <a href="img/<?php echo $row['prod_img'];?>"><img src="img/<?php echo $row['prod_img']; ?>" height="100px" width="100px" class="card-img-top"></a>
-                    <div class="card-body">       
-                    <div class="card-body">
-                    <h5 class="card-title"><?php echo $row['prod_name'];?></h5>
-                    <p class="card-text"><?php echo $row['cat_desc'];?></p>
-                    <p class=card-text> &#8369;<?php echo $row['price'];?></p>
-                      
-                    </div>
-                    
-                        <div class="card-footer"> <input style="width:100%;" type="number" class="form-control" name="qty_<?php echo $iterate; ?>"> </div>
-                    
-                    <?php
+					while($row=$query->fetch_array()){
+						
+
+					?>	
+
+				</form>
+				<form method="POST" action="cust_buy.php">
+						<div class="container-fluid">
+						<div class="row">
+						<div class="col-3" style="width: 18rem;">
+						
+						<div class="card" style="display: inline-block;">
+							<h5><img src="<?php echo $row['prod_img']?>" height="100px" width="100px"></h5>
+							<div class="card-body">
+								<h5><?php echo $row['cat_desc']; ?></h5>
+								<h5 class="card-title"><?php echo $row['prod_name']; ?><br>
+								<h5>&#8369; <?php echo number_format($row['price'], 2); ?></h5>
+								<h5><input type="number" class="form-control" name="qty_<?php echo $iterate; ?>"></h5>
+								<input type="checkbox" value="<?php echo $row['prod_id']; ?>||<?php echo $iterate; ?>" name="prod_id[]">
+
+							</div>
+							
+						</div>
+						</div>
+						</div>
+						</div>	
+						
+						<!-- <tr> -->
+						
+						 <!-- <td class="text-center"><input type="checkbox" value=" -->
+						 	<!-- <?php //echo $row['prod_id']; ?>||<?php// echo $iterate; ?>"  --><!-- name="prod_id[]" style=""> --><!-- </td>  -->
+						
+							<!-- <td><?php// echo $row['cat_desc']; ?></td> -->
+							<!-- <td><img src="<?php //echo $row['prod_img']?>" height="100px" width="100px"></td> -->
+							<!-- <td><?php //echo $row['prod_name']; ?></td> -->
+							<!-- <td class="text-left">&#8369; <?php// echo number_format($row['price'], 2); ?></td> -->
+							<!-- <td><input type="number" class="form-control" name="qty_<?php //echo $iterate; ?>"></td> -->
+						<!-- </tr> -->
+						<?php
 						$iterate++;
 					}
 				?>
-				
+			<!-- </tbody> -->
+		<!-- </table> -->
+		
+		
+		<div class="row">
+			<div class="col-md-12" style="margin-left:5px;">
+			    <input hidden type="text"  name="tblnum" value="<?php echo $_SESSION['tablenumber']; ?>">
+				<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Order</button>
+			</div>
+		</div>
+                    </div>
+                  
+        </form>
+     
+
 </div>
 </div>
-</div>
- <div class="col-10"></div>
-</div>
-</div>				
-
-
-
-	
-
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#checkAll").click(function(){

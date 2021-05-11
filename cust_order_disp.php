@@ -1,4 +1,3 @@
-
 <!-- Sales Details -->
 <div class="modal fade" id="details<?php echo $row['od_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

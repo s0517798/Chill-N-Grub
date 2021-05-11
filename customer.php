@@ -1,8 +1,13 @@
 <?php
+
+ include('cust_nav.php'); 
+ include('heading.php');
+
+
 session_start();
 
 if(!isset($_SESSION['tablenumber'])){
-    header("location: ../");
+    header("location: index.php");
 }
 
 ?>
@@ -19,10 +24,6 @@ if(!isset($_SESSION['tablenumber'])){
 <div class="heading">
 	
 </div>
-
-<?php include('cust_nav.php'); ?>
-<?php include('heading.php') ?>
-
 <div class="content">
 <div class="content1">
 <h1>Chill N Grub</h1>

@@ -2,18 +2,27 @@
 
     include_once "includes/db_conn.php";
     include_once "heading.php";
-    include_once "admin_nav.php";
+    include('acc_nav.php');
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-
+    <style>
+body {
+    background-image: url('img/b2.jpg');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	font-family: 'Franklin Gothic';
+    }
+</style>
 <link rel="stylesheet" type="text/css" href="bs/sales.css">
 </head>
 
-<body>
+<body >
 <div class="container">
 
 	<h1 class="page-header text-center">ORDERS</h1>
@@ -23,7 +32,7 @@
 			<th>Table Name</th>
 			<th>Total Sales</th>
 			<th>Status</th>
-			<th>Details</th>
+			<th>Action</th>
 		</thead>
 		<tbody>
 			<?php 
@@ -35,15 +44,14 @@
 						<td><?php echo date('M d, Y h:i A', strtotime($row['date']))?></td>
 						<td><?php echo $row['tblnum']; ?></td>
 						<td class="text-left">&#8369; <?php echo number_format($row['total_amount'], 2); ?></td>
-						<td> <?php switch($row['stat']){
+						<td><?php switch($row['stat']){
                                  case 'P': echo "Paid" ;
                                     break;
-                                 case 'U': echo "Not paid</p>"; 
+                                 case 'U': echo "Not paid"; 
                                     break;                  
-                                   }?>
-                        </td>
-						<td><a href="#details<?php echo $row['od_id']; ?>" data-toggle="modal" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span> View </a>
-							<?php include('admin_sales_disp.php'); ?>
+                                   }?></td>
+						<td><a href="#details<?php echo $row['od_id']; ?>" data-toggle="modal" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span> View Details </a>
+							<?php include('acc_sales_disp.php'); ?>
 						</td>
 					</tr>
 					<?php

@@ -12,13 +12,13 @@
     <a href="customer.php" class="home">Home</a>
     </li>
     <li>
-    <a href="menu.php" class="menu">Menu</a>
+    <a href="cust_menu.php" class="menu">Menu</a>
     </li>
     <li>
-    <a href="order.php" class="orders">Orders</a>
+    <a href="cust_order.php" class="orders">Your Order</a>
     </li>
     <li>
-    <a href="logout.php" class="orders">Logout</a>
+    <a href="thankyou.php" class="orders">Logout</a>
     </li>
     </ul>
 	

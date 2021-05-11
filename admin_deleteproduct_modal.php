@@ -1,7 +1,7 @@
 <!-- Delete Product -->
 <div class="modal fade" id="deleteproduct<?php echo $row['prod_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content" style="background-color: red;">
+        <div class="modal-content" style="color: black;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <center><h4 class="modal-title" id="myModalLabel">Delete Product</h4></center>

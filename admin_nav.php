@@ -27,7 +27,10 @@ include_once "heading.php";
 <a href="admin_category.php" class="category">Category</a>
 </li>
 <li>
-<a href="admin_mesa.php" class="category">Tables</a>
+<a href="admin_mesa.php" class="mesa">Tables</a>
+</li>
+<li>
+<a href="admin_accounts.php" class="accounts">User Accounts</a>
 </li>
 </ul>
 	

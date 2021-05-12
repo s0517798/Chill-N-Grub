@@ -6,6 +6,7 @@ include('includes/db_conn.php');
 if(isset($_GET['tablenumber'])){
   
    $_SESSION['tablenumber'] = $_GET['tablenumber'];
+   $_SESSION['ordernumber'] = uniqid();
 //    if($_SESSION['tablenumber'] !== $_GET['tablenumber'] ){
 //        header("location: ?tablenumber={$_SESSION['tablenumber']}");
 //    }

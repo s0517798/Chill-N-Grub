@@ -10,7 +10,10 @@
 <ul>
 
 <li>
-<a href="sales.php" class="orders">Sales</a>
+<a href="accountant.php" class="orders">Home</a>
+</li>
+<li>
+<a href="acc_sales.php" class="orders">Sales</a>
 </li>
 
 </ul>

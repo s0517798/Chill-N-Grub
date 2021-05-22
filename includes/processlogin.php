@@ -12,7 +12,7 @@ include_once "functions.php";
                 switch( $user_data['usertype']){
                     case 'W': header("location: ../waiter.php");
                               break;
-                    case 'Ac': header("location: ../accountant.php/");
+                    case 'C': header("location: ../accountant.php/");
                               break;
                     case 'A': header("location: ../admin.php");
                               break;

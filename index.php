@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< Updated upstream
-	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="bs/bootstrap.min.css">
-=======
     <meta charset="utf-8">
 	<title>Chill N Grub</title>
 	<link rel="stylesheet" type="text/css" href="bs/index2.css">
     <link rel="stylesheet" href="fontawesome-free-5.15.2-web/css/all.min.css">
->>>>>>> Stashed changes
 </head>
 <body>
 <div class="container">
@@ -19,19 +14,14 @@
             <form action="includes/processlogin.php" method="post">
                 <input type="text" class="form-control my-3" name="p_username" placeholder="username">
 
-            </div>
+            
             <div class="textbox">
                 <i class="fa fa-key" aria-hidden="true"></i>
                 <input type="password" class="form-control my-3" name="p_password" placeholder="password">
             </div>
                 <button class="btn btn-primary">Login</button>
             </form>
-        
+        </div>
     </div>
-</div>
-</div>
-
-
-
 </body>
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2021 at 12:15 PM
+-- Generation Time: May 12, 2021 at 02:58 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -104,53 +104,20 @@ INSERT INTO `mesa` (`tbl_id`, `tbnum`, `status`, `qr_img_file`) VALUES
 
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
-  `od_id` int(11) NOT NULL,
-  `prod_id` int(11) NOT NULL,
-  `qty` int(11) NOT NULL
+  `table_number` int(11) NOT NULL,
+  `order_number` varchar(64) NOT NULL,
+  `total_qty` int(11) NOT NULL,
+  `total_amount` double NOT NULL,
+  `order_date` date NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `od_id`, `prod_id`, `qty`) VALUES
-(21, 26, 48, 2),
-(22, 26, 82, 1),
-(23, 27, 48, 2),
-(24, 27, 82, 1),
-(25, 28, 48, 2),
-(26, 28, 82, 1),
-(27, 29, 10, 2),
-(28, 29, 39, 2),
-(29, 29, 55, 2),
-(30, 29, 76, 2),
-(31, 30, 82, 5),
-(32, 31, 1, 1),
-(33, 31, 12, 2),
-(34, 32, 15, 1),
-(35, 33, 1, 1),
-(36, 33, 12, 2),
-(37, 34, 15, 2),
-(38, 35, 7, 1),
-(39, 35, 11, 1),
-(40, 35, 29, 1),
-(41, 36, 13, 1),
-(42, 36, 4, 2),
-(43, 37, 1, 100),
-(44, 38, 1, 100),
-(45, 39, 1, 100),
-(46, 39, 82, 100),
-(47, 40, 1, 100),
-(48, 40, 82, 100),
-(49, 41, 1, 100),
-(50, 41, 82, 100),
-(51, 42, 18, 100),
-(52, 42, 82, 100),
-(53, 43, 1, 100),
-(54, 44, 1, 123),
-(55, 45, 1, 100),
-(56, 46, 82, 44),
-(57, 47, 82, 4);
+INSERT INTO `orders` (`order_id`, `table_number`, `order_number`, `total_qty`, `total_amount`, `order_date`, `status`) VALUES
+(58, 1, '609bc10787db5', 21, 4581.71, '2021-05-12', '1');
 
 -- --------------------------------------------------------
 
@@ -160,39 +127,23 @@ INSERT INTO `orders` (`order_id`, `od_id`, `prod_id`, `qty`) VALUES
 
 CREATE TABLE `order_details` (
   `od_id` int(11) NOT NULL,
+  `order_number` varchar(64) NOT NULL,
   `tblnum` varchar(11) NOT NULL,
-  `total_amount` double NOT NULL,
-  `date` datetime NOT NULL DEFAULT current_timestamp(),
-  `stat` varchar(1) NOT NULL DEFAULT 'U' COMMENT 'P is for paid and U'
+  `prod_id` int(11) NOT NULL,
+  `item_qty` int(11) NOT NULL,
+  `total_amt` double NOT NULL,
+  `order_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(1) NOT NULL DEFAULT 'P'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `order_details`
 --
 
-INSERT INTO `order_details` (`od_id`, `tblnum`, `total_amount`, `date`, `stat`) VALUES
-(26, 'a2c2', 0, '2021-04-01 22:02:30', 'P'),
-(27, 'a2c2', 0, '2021-04-01 22:05:32', 'P'),
-(28, 'a2c2', 1192, '2021-04-01 22:06:53', 'P'),
-(29, '3c', 2028, '2021-04-01 22:56:58', 'P'),
-(30, '5', 500, '2021-04-01 23:47:47', 'P'),
-(31, '2', 1144, '2021-04-02 00:15:40', 'P'),
-(32, '3', 150, '2021-04-02 01:56:29', 'P'),
-(33, '2', 1144, '2021-04-02 23:38:04', 'P'),
-(34, '3', 300, '2021-04-03 00:15:45', 'P'),
-(35, '1', 797, '2021-04-03 02:27:45', 'P'),
-(36, '3', 573, '2021-04-09 02:56:23', 'P'),
-(37, '3', 43600, '2021-04-15 16:17:31', 'P'),
-(38, '3', 0, '2021-04-15 16:19:19', 'P'),
-(39, '3', 53600, '2021-04-15 16:19:33', 'P'),
-(40, '3', 53600, '2021-04-15 16:19:41', 'P'),
-(41, '3', 53600, '2021-04-15 16:21:44', 'P'),
-(42, '3', 37900, '2021-04-15 16:26:54', 'P'),
-(43, '3', 43600, '2021-04-15 16:32:01', 'P'),
-(44, '3', 53628, '2021-04-15 16:33:25', 'P'),
-(45, '3', 43600, '2021-04-15 16:49:43', 'P'),
-(46, '<br /><b>Wa', 4400, '2021-05-09 22:56:14', 'P'),
-(47, '<br /><b>Wa', 400, '2021-05-09 23:18:49', 'P');
+INSERT INTO `order_details` (`od_id`, `order_number`, `tblnum`, `prod_id`, `item_qty`, `total_amt`, `order_date`, `status`) VALUES
+(54, '609bc10787db5', '1', 1, 7, 52.71, '0000-00-00 00:00:00', 'P'),
+(55, '609bc10787db5', '1', 12, 7, 2478, '2021-05-12 12:13:14', 'P'),
+(56, '609bc10787db5', '1', 10, 7, 2051, '2021-05-12 12:13:30', 'P');
 
 -- --------------------------------------------------------
 
@@ -539,13 +490,13 @@ ALTER TABLE `mesa`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `od_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `od_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `pricing`

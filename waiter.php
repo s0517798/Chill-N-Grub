@@ -3,9 +3,13 @@
 <head>
 	<title>Login</title>
 	<link rel="stylesheet" type="text/css" href="bs/bootstrap.min.css">
+    <link rel="stylesheet"  href="bs/waiter.css">
+
 </head>
 <body>
-<div class="container">
+
+    <div class="container">
+        <h2>Waiter Section</h2>
     <div class="row mt-3">
        <?php
         include_once "includes/db_conn.php";
@@ -23,9 +27,8 @@
                         Seat Number <?php echo $tble_info['tbnum'];?>
                         <br>
                         <a href="img/qr/<?php echo $tble_info['qr_img_file'];?>" class="btn btn-primary">Seat Here</a>
-                        <a href="includes/processlogintable.php?tablenumber=<?php echo $tble_info['tbnum'];?>" class="btn btn-primary">Test Assign Seat</a>
-                        </h3>
                         
+                        </h3>
                         <div class="card-body">
                              <?php switch($tble_info['status']){
                 case 'A': echo "<p class='text-success'> Available </p>" ;

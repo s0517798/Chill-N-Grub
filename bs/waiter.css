@@ -1,0 +1,53 @@
+
+body{
+	margin-top: 25vh;
+	background-image: url('../img/b2.jpg');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	font-family: 'Franklin Gothic';
+}
+
+.container h2{
+	text-align: center;
+	background: #ffa500b8;
+	color: black;
+	width: 200px;
+	font-size: 24px;
+	padding:5px;
+	height: 40px;
+	border-radius: 10px;	
+}
+h3{
+	text-align: center;
+}
+
+.btn-primary{
+	
+	margin-top: 20px;
+	border-radius: 5px;
+	height: 40px;
+	width: 200px;
+}
+.btn-primary:hover{
+	background: blue;
+	box-shadow: 5px 5px 15px rgba(0,0,205);
+
+}
+.card{
+	background-color: #FFFAFA;
+	border-radius: 5px;
+}
+.card:hover{
+	transform: scale(1.1);
+	transition: all 0.4s ease-out;
+	box-shadow: 7px 7px 15px rgba(128,0,0);
+}
+
+.card-body{
+	font-size: 30px;
+	text-align: center;
+	font-weight: bold;
+	
+}

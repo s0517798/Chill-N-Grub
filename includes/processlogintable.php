@@ -4,7 +4,7 @@
 if(isset($_GET['tablenumber'])){
         include "db_conn.php";
         $tblnumber = htmlentities($_GET['tablenumber']);
-         $sql_upd = "UPDATE `table`
+         $sql_upd = "UPDATE `mesa`
                         SET status = 'O'
                     WHERE tbnum = ?";
         $stmt_upd = mysqli_stmt_init($conn);
@@ -18,6 +18,6 @@ if(isset($_GET['tablenumber'])){
     
         session_start();
         $_SESSION['tablenumber'] = $_GET['tablenumber'];
-        header("location: ../Customer/menu.php?tablenumber={$tblnumber}");
+        header("location: ../customer.php?tablenumber={$tblnumber}");
         echo "Processed.";
     }

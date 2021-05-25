@@ -24,7 +24,7 @@ Customer's Homepage
 Customer's Menu Page 
 ![190766554_517353869453531_8025137334531605029_n](https://user-images.githubusercontent.com/81260675/119527741-31f70500-bdb3-11eb-829b-b2b8f286878d.png)
 
-Dispay of Customer's orders
+Display of Customer's orders
 ![191771039_4005303912899723_742437846843503208_n](https://user-images.githubusercontent.com/81260675/119527760-37544f80-bdb3-11eb-82d0-8a825cdc96ca.png)
 
 Accountant's Homepage 

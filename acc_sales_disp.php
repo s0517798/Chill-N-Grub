@@ -1,6 +1,5 @@
-
 <!-- Sales Details -->
-<div class="modal fade" id="details<?php echo $row['od_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="details<?php echo $row['order_number']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" style="width:75%;">
         <div class="modal-content " style="background-color: rgba(0, 0, 0, .5)" >
             <div class="modal-header">
@@ -10,25 +9,24 @@
             <div class="modal-body">
                 <div class="container-fluid">
                    
-                   <form method="POST" action="acc_editpaymentstatus.php?status=<?php echo $row['od_id']; ?>" enctype="multipart/form-data">
+                   <form method="POST" action="acc_editpaymentstatus.php?status=<?php echo $row['order_number']; ?>" enctype="multipart/form-data">
                    
                     <h5>Table Number: <b><?php echo $row['tblnum']; ?></b>
                         <span class="pull-right">
-                           <?php echo date('M d, Y h:i A', strtotime($row['date'])) ?>
+                           <?php echo date('M d, Y', strtotime($row['date'])) ?>
                         </span>
                     </h5>
-                    <table class="table" style="color:red">
+                    <table class="table" style="color:black">
                         <thead>
                             <th>Product Name</th>
                             <th>Price</th>
                             <th>Purchase Quantity</th>
-                            <th>Payment Status</th>
                             <th>Subtotal</th>
                             
                         </thead>
                         <tbody>
                             <?php
-                                $sql="select * from orders left join product on product.prod_id=orders.prod_id left join pricing on product.prod_id=pricing.prod_id where od_id='". $row['od_id']."'";
+                                $sql="select * from orders left join product on product.prod_id=orders.prod_id left join pricing on product.prod_id=pricing.prod_id where order_number='". $row['order_number']."'";
                                 $dquery=$conn->query($sql);
                                 while($drow=$dquery->fetch_array()){
                                     ?>
@@ -36,12 +34,6 @@
                                         <td><?php echo $drow['prod_name']; ?></td>
                                         <td class="text-center">&#8369;<?php echo number_format($drow['price'], 2); ?></td>
                                         <td><?php echo $drow['qty']; ?></td>
-                                        <td><?php switch($row['stat']){
-                                            case 'P': echo "Paid" ;
-                                            break;
-                                            case 'U': echo "Not paid"; 
-                                            break;                  
-                                   }?></td>
                                         <td class="text-left">&#8369;
                                             <?php
                                                 $subt = $drow['price']*$drow['qty'];
@@ -78,6 +70,7 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+
 <script> 
     $(document).ready(function(){
     $("#button2").click(function(){
@@ -89,3 +82,6 @@
     });
     });
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-show-password/1.0.3/bootstrap-show-password.min.js"></script>

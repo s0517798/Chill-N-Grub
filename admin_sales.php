@@ -1,5 +1,20 @@
 <?php 
 
+session_start();
+
+if(isset($_SESSION['usertype']) && isset($_SESSION['userid'])){
+    switch($_SESSION['usertype']){
+        case 'A' : header("location: ");
+            break;
+        case 'C' : break;
+        case 'W' : break;  
+    }
+}
+else{
+    header("location: index.php");
+}
+include_once "includes/functions.php";
+
     include_once "includes/db_conn.php";
     include_once "heading.php";
     include_once "admin_nav.php";
@@ -11,19 +26,20 @@
 <head>
 
 <link rel="stylesheet" type="text/css" href="bs/sales.css">
+<link rel="stylesheet" type="text/css" href="bs/admin_sales.css">
 </head>
 
 <body>
 <div class="container">
 
-	<h1 class="page-header text-center">ORDERS</h1>
-	<table class="table">
-		<thead>
-			<th>Date</th>
-			<th>Table Name</th>
-			<th>Total Sales</th>
-			<th>Status</th>
-			<th>Details</th>
+	<h1 class="page-header text-center"style="margin-top: 100px;">ORDERS</h1>
+	<table class="table" style="border:solid #ff9900; background: rgba(255,255,255,0.5); color: black;">
+		<thead style="background: #ff9900; border: solid white;">
+			<th style="font-size: 20px;">Date</th>
+			<th style="font-size: 20px;">Table Name</th>
+			<th style="font-size: 20px;">Total Sales</th>
+			<th style="font-size: 20px;">Status</th>
+			<th style="font-size: 20px;">Details</th>
 		</thead>
 		<tbody>
 			<?php 
@@ -42,7 +58,7 @@
                                     break;                  
                                    }?>
                         </td>
-						<td><a href="#details<?php echo $row['od_id']; ?>" data-toggle="modal" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span> View </a>
+						<td><a href="#details<?php echo $row['order_number']; ?>" data-toggle="modal" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span> View </a>
 							<?php include('admin_sales_disp.php'); ?>
 						</td>
 					</tr>

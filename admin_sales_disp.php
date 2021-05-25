@@ -1,6 +1,6 @@
 <!-- Sales Details -->
 
-<div class="modal fade" id="details<?php echo $row['od_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="details<?php echo $row['order_number']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content " style="background-color: rgba(0, 0, 0, .5)" >
             <div class="modal-header">
@@ -11,10 +11,10 @@
                 <div class="container-fluid">
                     <h5>Table Number: <b><?php echo $row['tblnum']; ?></b>
                         <span class="pull-right">
-                           <?php echo date('M d, Y h:i A', strtotime($row['date'])) ?>
+                           <?php echo date('M d, Y', strtotime($row['date'])) ?>
                         </span>
                     </h5>
-                    <table class="table" style="color:red">
+                    <table class="table" style="color:black">
                         <thead>
                             <th>Product Name</th>
                             <th>Price</th>
@@ -24,7 +24,7 @@
                         </thead>
                         <tbody>
                             <?php
-                                $sql="select * from orders left join product on product.prod_id=orders.prod_id left join pricing on product.prod_id=pricing.prod_id where od_id='". $row['od_id']."'";
+                                $sql="select * from orders left join product on product.prod_id=orders.prod_id left join pricing on product.prod_id=pricing.prod_id where order_number='". $row['order_number']."'";
                                 $dquery=$conn->query($sql);
                                 while($drow=$dquery->fetch_array()){
                                     ?>

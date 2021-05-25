@@ -4,6 +4,7 @@
 	$id = $_GET['mesa'];
 
 	$tname=$_POST['tname'];
+    $qr=$_POST['qrlink'];
 
     $sql="select * from mesa where tbl_id='$id'";
 	$query=$conn->query($sql);
@@ -21,7 +22,7 @@
 	}
 
 
-	$sql="update mesa set tbnum='$tname', qr_img_file='$location' where tbl_id='$id'";
+	$sql="update mesa set tbnum='$tname',qr_link='$qr', qr_img_file='$location' where tbl_id='$id'";
 	$conn->query($sql);
 
 	header('location:admin_mesa.php');

@@ -2,4 +2,6 @@
 session_start();
 session_unset();
 session_destroy();
-header("location: thankyou.php");
+
+header("location:thankyou.php");
+?>

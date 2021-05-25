@@ -9,16 +9,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">LOGO</a>
+            <a class="navbar-brand" href="#"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="customer.php">Home <span class="sr-only">(current)</span></a></li>
+                <li><a href="">Home <span class="sr-only">(current)</span></a></li>
                 <li><a href="cust_menu.php">Menu <span class="sr-only">(current)</span></a></li>
-                <li><a href="cust_order.php">Orders <span class="sr-only">(current)</span></a></li>
-                <li><a href="thankyou.php">Logout <span class="sr-only">(current)</span></a></li>
+                <li><a href="cust_order.php">Cash out <span class="sr-only">(current)</span></a></li>
 
 
                 <!--
@@ -34,14 +33,15 @@
                         <li><a href="#">One more separated link</a></li>
                     </ul>
                 </li>
--->
+
             </ul>
-            <form class="navbar-form navbar-left">
+           <form class="navbar-form navbar-left">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search">
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
+ 
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Link</a></li>
                 <li class="dropdown">
@@ -55,6 +55,7 @@
                     </ul>
                 </li>
             </ul>
+   -->          
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>

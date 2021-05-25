@@ -3,7 +3,7 @@
 
 	$id=$_GET['status'];
 
-	$sql="update order_details set stat='P' where od_id='$id'";
+	$sql="update order_details set stat='P' where order_number='$id'";
 	$conn->query($sql);
 
 	header('location:acc_sales.php');

@@ -1,25 +1,40 @@
 <?php 
+session_start();
 
-    include_once "includes/db_conn.php";
-    include_once "heading.php";
-    include_once "admin_nav.php";
+if(isset($_SESSION['usertype']) && isset($_SESSION['userid'])){
+    switch($_SESSION['usertype']){
+        case 'A' : header("location: ");
+            break;
+        case 'C' : break;
+        case 'W' : break;  
+    }
+}
+else{
+    header("location: index.php");
+}
+include_once "includes/functions.php";
+include_once "includes/db_conn.php";
+include_once "heading.php";
+include_once "admin_nav.php";
 
 ?>
+
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="bs/scrollbar.css">
     
-    <div class="container">
-	<h1 class="page-header text-center">USER ACCOUNTS</h1>
+    <div class="container" style="margin-top: 100px;">
+	<h1 class="page-header text-center" style="font-family: corbel; font-size:70px; font-weight: bold; color: white;">USER ACCOUNTS</h1>
 	<div class="row">
 		<div class="col-md-12">
 			<a href="#add_acc" data-toggle="modal" class="pull-right btn btn-primary"><span class="glyphicon glyphicon-plus"></span>Account</a>
 		</div>
 	</div>
-	<div style="margin-top:10px;">
+	<div style="margin-top:10px; background: rgba(255,255,255,0.5); color: black; border: solid #ff9900;">
 		<table class="table table-striped table-bordered">
-			<thead>
-				<th>Username</th>
-				<th>Action</th>
+			<thead style="background: #ff9900; border: solid white;">
+				<th style="font-size: 20px;">Username</th>
+				<th style="font-size: 20px;">Action</th>
 			</thead>
 			<tbody>
 				<?php

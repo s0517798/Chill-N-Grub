@@ -16,7 +16,13 @@
 	$sql1="insert into product ( prod_name, cat_id, prod_img) values ('$pname', '$category', '$location')";
 	$conn->query($sql1);
     
+    $sql2 = "select * from product where prod_name = '$pname'";
+    $query=$conn->query($sql2);
+    while($row=$query->fetch_array()){
 
+    $sql3 = "insert into pricing (prod_id) values ('".$row['prod_id']."')";
+        $conn->query($sql3);
+      }  
 	header('location:admin_product.php');
 
 ?>

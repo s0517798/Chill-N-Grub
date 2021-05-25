@@ -97,7 +97,7 @@
                             </div>
                             <div class="col-md-9">
                                 <select name="utype" class="form-control">
-                                 <option value="<?php echo $row['user_id']; ?>"><?php switch($row['usertype']){
+                                 <option value="<?php echo $row['usertype']; ?>"><?php switch($row['usertype']){
                                  case 'C': echo "Accountant" ;
                                     break;
                                  case 'A': echo "Admin"; 

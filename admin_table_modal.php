@@ -19,6 +19,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group" style="margin-top:10px;">
+                        <div class="row">
+                            <div class="col-md-3" style="margin-top:7px;">
+                                <label class="control-label">QR link:</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="qrlink" required>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-3" style="margin-top:7px;">
@@ -61,6 +71,16 @@
                             </div>
                             <div class="col-md-9" style="margin-top:11px;">
                                 <input type="text" class="form-control" value="<?php echo $row['tbnum']; ?>" name="tname">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:10px;">
+                        <div class="row">
+                            <div class="col-md-3" style="margin-top:7px;">
+                                <label class="control-label">QR link:</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="qrlink" required value="<?php echo $row['qr_link']; ?>">
                             </div>
                         </div>
                     </div>

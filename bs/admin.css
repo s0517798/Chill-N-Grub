@@ -1,0 +1,14 @@
+h1{
+	font-family: snowkybrush;
+	font-weight: bold;
+	font-size: 80pt;
+	text-align: center;
+	margin-top: 230px;
+	margin-left: 150px;
+	margin-right: 150px;
+	color: #ff9900;
+	border: solid #ff9900;
+	border-radius: 15px;
+	border-width: 10pt;
+	padding: 20px;
+}

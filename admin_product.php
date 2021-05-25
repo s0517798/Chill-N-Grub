@@ -1,4 +1,4 @@
-<?php 
+ style=" font-size: 20px;"<?php 
 
     include_once "includes/db_conn.php";
     include_once "heading.php";
@@ -10,14 +10,15 @@
 <html>
 <head>
 	<title>PRODUCTS CRUD</title>
-<link rel="stylesheet" type="text/css" href="bs/product.css">
+	<link rel="stylesheet" type="text/css" href="bs/product.css">
+	<link rel="stylesheet" type="text/css" href="bs/scrollbar.css">
 </head>
 
 
 <div class="container">
-	<h1 class="page-header text-center" style="font-size: 50px;
-	font-family: OCR A Std, monospace;
-	color: white;">PRODUCTS CRUD</h1>
+	<h1 class="page-header text-center" style="font-size: 70px;
+	font-family: corbel, monospace;
+	color: white; font-weight: bold; margin-top: 100px;">PRODUCTS CRUD</h1>
 	<div class="row">
 		<div class="col-md-12">
 			<select id="catList" class="btn btn-default">
@@ -36,12 +37,12 @@
 		</div>
 	</div>
 	<div style="margin-top:10px;">
-		<table class="table">
-			<thead>
-				<th>Photo</th>
-				<th>Product Name</th>
-				<th>Price</th>
-				<th>Action</th>
+		<table class="table" style="border:solid #ff9900; background: rgba(255,255,255,0.5); color: black;">
+			<thead style="background: #ff9900; border: solid white;">
+				<th style=" font-size: 20px;">Photo</th>
+				<th style=" font-size: 20px;">Product Name</th>
+				<th style=" font-size: 20px;">Price</th>
+				<th style=" font-size: 20px;">Action</th>
 			</thead>
 			<tbody>
 				<?php

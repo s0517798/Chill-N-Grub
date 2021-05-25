@@ -8,21 +8,22 @@
 
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="bs/scrollbar.css">
     
 </head>
 <body>
-<div class="container">
-	<h1 class="page-header text-center">CATEGORY</h1>
+<div class="container" style="margin-top: 100px;">
+	<h1 class="page-header text-center" style="font-family: corbel; font-weight: bold; font-size: 70px; color: white;">CATEGORY</h1>
 	<div class="row">
 		<div class="col-md-12">
 			<a href="#addcategory" data-toggle="modal" class="pull-right btn btn-primary"><span class="glyphicon glyphicon-plus"></span>Category</a>
 		</div>
 	</div>
-	<div style="margin-top:10px;">
+	<div style="margin-top:10px; border: solid #ff9900; background: rgba(255,255,255,0.5); color: black;">
 		<table class="table table-striped table-bordered">
-			<thead>
-				<th>Category Name</th>
-				<th>Action</th>
+			<thead style="background: #ff9900; border: solid white;">
+				<th style="font-size: 20px;">Category Name</th>
+				<th style="font-size: 20px;">Action</th>
 			</thead>
 			<tbody>
 				<?php

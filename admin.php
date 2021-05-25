@@ -8,11 +8,12 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="bs/index.css">
+	<link rel="stylesheet" type="text/css" href="bs/admin.css">
 </head>
 <body>
-
-	<h1>Chill n grub</h1>
-
+<div class="CNG">
+	<h1><img src="img/cng2.png" style="height: 500px; width:500px; margin:-240px;">Chill n Grub</h1>
+</div>
 
 
 </body>

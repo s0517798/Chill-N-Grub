@@ -10,7 +10,15 @@
 <ul>
 
 <li>
+<<<<<<< Updated upstream
 <a href="sales.php" class="orders">Sales</a>
+=======
+<a href="accountant.php" class="orders">Home</a>
+</li>
+<li>
+<a href="acc_sales.php" class="orders">Orders
+</a>
+>>>>>>> Stashed changes
 </li>
 
 </ul>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2021 at 08:11 PM
+-- Generation Time: May 22, 2021 at 09:36 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -53,6 +53,7 @@ CREATE TABLE `mesa` (
   `tbl_id` int(11) NOT NULL,
   `tbnum` varchar(64) NOT NULL,
   `status` varchar(1) NOT NULL DEFAULT 'A' COMMENT 'A is for available and O for occupied',
+  `qr_link` varchar(128) NOT NULL,
   `qr_img_file` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -60,11 +61,11 @@ CREATE TABLE `mesa` (
 -- Dumping data for table `mesa`
 --
 
-INSERT INTO `mesa` (`tbl_id`, `tbnum`, `status`, `qr_img_file`) VALUES
-(1, '1', 'O', 'table1.jpg'),
-(2, '2', 'O', 'table2.png'),
-(3, '3', 'O', 'table3.png'),
-(13, 'trytable1q', 'A', 'background3_1619713956.jpg');
+INSERT INTO `mesa` (`tbl_id`, `tbnum`, `status`, `qr_link`, `qr_img_file`) VALUES
+(1, '1', 'A', 'www.koobecaf.moc', 'table1.jpg'),
+(2, 'AB1', 'A', '', 'table2.png'),
+(3, '3', 'O', '', 'table3.png'),
+(13, 'trytable1q', 'A', '', 'background3_1619713956.jpg');
 
 -- --------------------------------------------------------
 
@@ -74,6 +75,7 @@ INSERT INTO `mesa` (`tbl_id`, `tbnum`, `status`, `qr_img_file`) VALUES
 
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
+  `order_number` varchar(100) NOT NULL,
   `od_id` int(11) NOT NULL,
   `prod_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL
@@ -83,42 +85,29 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `od_id`, `prod_id`, `qty`) VALUES
-(21, 26, 48, 2),
-(22, 26, 82, 1),
-(23, 27, 48, 2),
-(24, 27, 82, 1),
-(25, 28, 48, 2),
-(26, 28, 82, 1),
-(27, 29, 10, 2),
-(28, 29, 39, 2),
-(29, 29, 55, 2),
-(30, 29, 76, 2),
-(31, 30, 82, 5),
-(32, 31, 1, 1),
-(33, 31, 12, 2),
-(34, 32, 15, 1),
-(35, 33, 1, 1),
-(36, 33, 12, 2),
-(37, 34, 15, 2),
-(38, 35, 7, 1),
-(39, 35, 11, 1),
-(40, 35, 29, 1),
-(41, 36, 13, 1),
-(42, 36, 4, 2),
-(43, 37, 1, 100),
-(44, 38, 1, 100),
-(45, 39, 1, 100),
-(46, 39, 82, 100),
-(47, 40, 1, 100),
-(48, 40, 82, 100),
-(49, 41, 1, 100),
-(50, 41, 82, 100),
-(51, 42, 18, 100),
-(52, 42, 82, 100),
-(53, 43, 1, 100),
-(54, 44, 1, 123),
-(55, 45, 1, 100);
+INSERT INTO `orders` (`order_id`, `order_number`, `od_id`, `prod_id`, `qty`) VALUES
+(74, 'TESTING', 0, 12, 6),
+(75, 'TESTING', 0, 1, 1),
+(76, 'TESTING', 0, 12, 1),
+(77, 'TESTING', 0, 1, 1),
+(78, 'TESTING', 0, 1, 1),
+(79, 'TESTING', 0, 12, 1),
+(80, 'TESTING', 0, 1, 5),
+(81, 'ABCD', 0, 1, 3),
+(82, 'ABCD', 0, 12, 3),
+(83, 'ABCD', 0, 1, 1),
+(84, 'ABCD', 0, 12, 1),
+(85, 'ABCD', 0, 1, 4),
+(86, 'ABCD', 0, 1, 4),
+(87, 'ABCD', 0, 1, 9),
+(88, 'ABCD', 0, 12, 6),
+(89, 'ABCD', 0, 12, 2),
+(90, 'ABCD', 0, 1, 3),
+(91, 'ABCD', 0, 12, 3),
+(92, 'ABCD', 0, 1, 4),
+(93, 'ABCD', 0, 1, 10),
+(94, 'ABCD', 0, 1, 2),
+(95, 'ABCD', 0, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -128,9 +117,10 @@ INSERT INTO `orders` (`order_id`, `od_id`, `prod_id`, `qty`) VALUES
 
 CREATE TABLE `order_details` (
   `od_id` int(11) NOT NULL,
+  `order_number` varchar(100) NOT NULL,
   `tblnum` varchar(11) NOT NULL,
   `total_amount` double NOT NULL,
-  `date` datetime NOT NULL DEFAULT current_timestamp(),
+  `date` date NOT NULL,
   `stat` varchar(1) NOT NULL DEFAULT 'U' COMMENT 'P is for paid and U'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -138,27 +128,15 @@ CREATE TABLE `order_details` (
 -- Dumping data for table `order_details`
 --
 
-INSERT INTO `order_details` (`od_id`, `tblnum`, `total_amount`, `date`, `stat`) VALUES
-(26, 'a2c2', 0, '2021-04-01 22:02:30', ''),
-(27, 'a2c2', 0, '2021-04-01 22:05:32', ''),
-(28, 'a2c2', 1192, '2021-04-01 22:06:53', ''),
-(29, '3c', 2028, '2021-04-01 22:56:58', 'P'),
-(30, '5', 500, '2021-04-01 23:47:47', ''),
-(31, '2', 1144, '2021-04-02 00:15:40', ''),
-(32, '3', 150, '2021-04-02 01:56:29', 'P'),
-(33, '2', 1144, '2021-04-02 23:38:04', ''),
-(34, '3', 300, '2021-04-03 00:15:45', 'P'),
-(35, '1', 797, '2021-04-03 02:27:45', ''),
-(36, '3', 573, '2021-04-09 02:56:23', 'P'),
-(37, '3', 43600, '2021-04-15 16:17:31', 'P'),
-(38, '3', 0, '2021-04-15 16:19:19', 'P'),
-(39, '3', 53600, '2021-04-15 16:19:33', 'U'),
-(40, '3', 53600, '2021-04-15 16:19:41', 'P'),
-(41, '3', 53600, '2021-04-15 16:21:44', 'P'),
-(42, '3', 37900, '2021-04-15 16:26:54', 'P'),
-(43, '3', 43600, '2021-04-15 16:32:01', ''),
-(44, '3', 53628, '2021-04-15 16:33:25', ''),
-(45, '3', 43600, '2021-04-15 16:49:43', '');
+INSERT INTO `order_details` (`od_id`, `order_number`, `tblnum`, `total_amount`, `date`, `stat`) VALUES
+(57, 'TRY3', '1', 123, '2021-05-20', 'P'),
+(58, 'TRY2', '1', 123, '2021-05-20', 'P'),
+(59, 'TRY1', '1', 123, '2021-05-20', 'P'),
+(60, 'QIQHQHQ', '1', 615, '2021-05-20', 'P'),
+(61, 'TESTING', '1', 615, '2021-05-20', 'P'),
+(62, 'ABCD', 'AB1', 9102, '2021-05-20', 'U'),
+(63, 'Mylaa', 'AB12', 0, '2021-05-21', 'P'),
+(64, 'Mylaa', 'AB12', 0, '2021-05-22', 'P');
 
 -- --------------------------------------------------------
 
@@ -177,7 +155,7 @@ CREATE TABLE `pricing` (
 --
 
 INSERT INTO `pricing` (`price_id`, `prod_id`, `price`) VALUES
-(1, '1', 123),
+(1, '1', 120),
 (2, '2', 233),
 (3, '3', 757),
 (4, '4', 143),
@@ -300,7 +278,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`prod_id`, `prod_name`, `cat_id`, `prod_img`) VALUES
-(1, 'Broccoli and Garlic-ricotta toasts with hot  honey ko', 1, '1567666_1619714761.png'),
+(1, 'Broccoli and Garlic-ricotta toasts with hot  honey', 1, '1567666_1619714761.png'),
 (2, 'Sea Bream Crudo with lemon and olives', 1, NULL),
 (3, 'Pasta e Fagioli with Escarole', 1, NULL),
 (4, 'Flatbread Capreses', 1, NULL),
@@ -408,7 +386,8 @@ INSERT INTO `product` (`prod_id`, `prod_name`, `cat_id`, `prod_img`) VALUES
 (216, 'tubig', 3, '1567666_1619704697.png'),
 (217, 'kanin', 5, 'background2_1619706921.jpg'),
 (218, 'a1', 1, '1567666_1619714534.png'),
-(219, 'a2', 1, 'Screenshot_2_1619798866.png');
+(219, 'a2', 1, 'Screenshot_2_1619798866.png'),
+(220, 'testq', 1, '23_1621618494.jpg');
 
 -- --------------------------------------------------------
 
@@ -430,7 +409,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `user_name`, `password`, `usertype`) VALUES
 (1, 'waiter1', '1retiaw', 'W'),
 (2, 'waiter2', '2retiaw', 'W'),
-(3, 'admin1', 'admin123', 'A');
+(3, 'admin5', 'admin123', 'A');
 
 --
 -- Indexes for dumped tables
@@ -498,13 +477,13 @@ ALTER TABLE `mesa`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `od_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `od_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `pricing`
@@ -516,13 +495,13 @@ ALTER TABLE `pricing`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220;
+  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=221;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
